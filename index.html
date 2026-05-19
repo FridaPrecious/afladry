@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AFLA-DRY 360° — Climate-Smart Aflatoxin Mitigation</title>
+  <meta
+    name="description"
+    content="AFLA-DRY 360° is a climate-smart, data-driven aflatoxin mitigation platform improving food safety, traceability, and market access in Kenya."
+  />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-deep: #0a3f2a;
+      --primary: #0E5A3C;
+      --primary-soft: #1c6e4a;
+      --primary-light: #e1f0e8;
+      --accent-gold: #D4AF37;
+      --accent-gold-dark: #b38f2c;
+      --neutral-100: #FEFCF5;
+      --neutral-200: #F2EFE6;
+      --neutral-600: #5E5B52;
+      --neutral-800: #2C2A26;
+      --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 25px 45px -16px rgba(0, 0, 0, 0.15);
+      --border-radius-card: 28px;
+      --transition-smooth: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--neutral-100);
+      color: var(--neutral-800);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 63, 42, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--accent-gold), #e6c468);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--primary-deep);
+    }
+
+    .nav-logo-text {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: white;
+    }
+
+    .nav-logo-sub {
+      font-size: 0.7rem;
+      color: rgba(255,255,240,0.7);
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: rgba(255,255,245,0.85);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      border-radius: 40px;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links li a:hover {
+      background: rgba(212, 175, 55, 0.18);
+      color: white;
+    }
+
+    .nav-cta {
+      background: var(--accent-gold);
+      color: var(--primary-deep) !important;
+      font-weight: 700;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 26px;
+      height: 2px;
+      background: white;
+      border-radius: 4px;
+    }
+
+    /* Hero */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(ellipse at 80% 20%, #0c4d34, #042418);
+      margin-top: 0;
+      position: relative;
+      margin-top: 50px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.18);
+      backdrop-filter: blur(4px);
+      padding: 6px 18px;
+      border-radius: 60px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      font-size: 0.75rem;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-title {
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 24px;
+    }
+
+    .hero-title em {
+      color: var(--accent-gold);
+      font-style: normal;
+    }
+
+    .hero-sub {
+      color: rgba(255,255,240,0.8);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-gold);
+      color: var(--primary-deep);
+    }
+    .btn-primary:hover {
+      background: #f0cd6a;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,240,0.5);
+      color: white;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      border-color: var(--accent-gold);
+      background: rgba(212,175,55,0.1);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .hero-stat {
+      background: rgba(255,255,245,0.05);
+      backdrop-filter: blur(8px);
+      padding: 22px 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,245,0.08);
+    }
+
+    .hero-stat-num {
+      font-size: 2.3rem;
+      font-weight: 800;
+      font-family: 'Playfair Display', serif;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,250,230,0.85);
+      line-height: 1.4;
+    }
+
+    /* Live Dashboard */
+    .hero-visual {
+      background: rgba(10, 35, 25, 0.75);
+      backdrop-filter: blur(20px);
+      border-radius: 36px;
+      padding: 28px;
+      border: 1px solid rgba(212,175,55,0.3);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .dash-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 24px;
+      border-left: 3px solid var(--accent-gold);
+      padding-left: 12px;
+    }
+
+    .dash-header h4 {
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      color: #4ade80;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .dash-kpis {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .dash-kpi {
+      background: rgba(0,0,0,0.45);
+      border-radius: 22px;
+      padding: 18px 22px;
+      transition: all 0.2s;
+    }
+
+    .dash-kpi-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .dash-kpi-val {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -1px;
+    }
+
+    .dash-kpi-lbl {
+      font-size: 0.8rem;
+      color: rgba(255,245,210,0.75);
+    }
+
+    .dash-kpi-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 30px;
+    }
+
+    .badge-safe {
+      background: rgba(52,199,89,0.2);
+      color: #86efac;
+    }
+    .badge-warn {
+      background: rgba(212,175,55,0.2);
+      color: #fde047;
+    }
+
+    .progress-bar {
+      margin-top: 12px;
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      width: 12.4%;
+      height: 100%;
+      background: var(--accent-gold);
+      border-radius: 10px;
+    }
+
+    /* Sections */
+    .section-padding {
+      padding: 120px 0;
+    }
+
+    .section-label {
+      display: inline-flex;
+      background: var(--primary-light);
+      padding: 6px 18px;
+      border-radius: 60px;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.75rem;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 54px);
+      margin-bottom: 20px;
+    }
+
+    .section-title em {
+      color: var(--primary);
+      font-style: normal;
+    }
+
+    .section-lead {
+      font-size: 1.2rem;
+      color: var(--neutral-600);
+      max-width: 720px;
+    }
+
+    /* Cards */
+    .challenge-cards, .solution-features, .impact-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: var(--border-radius-card);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .info-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--primary-light);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .info-icon.icon-warning::before { content: "⚠"; font-size: 24px; }
+    .info-icon.icon-market::before { content: "₿"; font-size: 24px; }
+    .info-icon.icon-loss::before { content: "⏚"; font-size: 24px; }
+    .info-icon.icon-iot::before { content: "◈"; font-size: 22px; }
+    .info-icon.icon-test::before { content: "⌬"; font-size: 24px; }
+    .info-icon.icon-analytics::before { content: "◇"; font-size: 22px; }
+    .info-icon.icon-carbon::before { content: "⬚"; font-size: 24px; }
+    .info-icon.icon-cert::before { content: "✓"; font-size: 24px; font-weight: bold; }
+    .info-icon.icon-data::before { content: "▣"; font-size: 22px; }
+
+    .info-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .info-card p {
+      color: var(--neutral-600);
+      line-height: 1.5;
+    }
+
+    /* Partners Carousel */
+    .partners-carousel-container {
+      position: relative;
+      margin-top: 48px;
+      padding: 0 40px;
+    }
+
+    .carousel-wrapper {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      cursor: grab;
+      user-select: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-wrapper:active {
+      cursor: grabbing;
+    }
+
+    .carousel-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .carousel-wrapper::-webkit-scrollbar-track {
+      background: var(--neutral-200);
+      border-radius: 10px;
+    }
+
+    .carousel-wrapper::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+    }
+
+    .partner-carousel {
+      display: flex;
+      gap: 30px;
+      padding: 20px 0;
+      width: max-content;
+    }
+
+    .partner-card-carousel {
+      background: white;
+      border-radius: 20px;
+      padding: 24px 32px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      min-width: 200px;
+      cursor: pointer;
+    }
+
+    .partner-card-carousel:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Logo image styling */
+    .partner-logo-img {
+      max-width: 100px;
+      max-height: 70px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .partner-name-carousel {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    /* Fallback when image fails - hide image, show name */
+    .partner-card-carousel img.error + .partner-name-carousel,
+    .partner-card-carousel img[src=""] + .partner-name-carousel {
+      display: block !important;
+    }
+
+    .carousel-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: white;
+      border: 1px solid var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+      z-index: 10;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .carousel-nav-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .carousel-nav-btn-left { left: 0; }
+    .carousel-nav-btn-right { right: 0; }
+
+    .sme-opportunity {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 48px;
+      justify-content: space-between;
+    }
+
+    .contact-box {
+      background: var(--primary-light);
+      border-radius: 36px;
+      padding: 48px;
+      margin-top: 48px;
+      text-align: center;
+    }
+
+    .contact-btn {
+      background: var(--primary);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .contact-btn:hover {
+      background: var(--primary-deep);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background: #08261b;
+      color: #ddd8cc;
+      padding: 64px 0 32px;
+    }
+
+    .footer-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .footer-logo-mark {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-gold);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--primary-deep);
+    }
+    
+    .footer-bottom {
+      margin-top: 56px;
+      border-top: 1px solid rgba(255,255,230,0.1);
+      padding-top: 24px;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .container {
+        padding: 0 24px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .nav-mobile-open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #0a3f2ae6;
+        backdrop-filter: blur(20px);
+        padding: 28px 24px;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+      .section-padding {
+        padding: 80px 0;
+      }
+      .partners-carousel-container {
+        padding: 0 20px;
+      }
+      .carousel-nav-btn {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0 20px;
+      }
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        text-align: center;
+      }
+      .partner-card-carousel {
+        min-width: 160px;
+        padding: 18px 24px;
+      }
+      .carousel-nav-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="mainNav">
+    <a href="#home" class="nav-logo">
+      <div class="nav-logo-mark">AD</div>
+      <div>
+        <div class="nav-logo-text">AFLA-DRY 360°</div>
+        <span class="nav-logo-sub">Climate-Smart Aflatoxin Mitigation</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#challenge">The Challenge</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#pilot">Pilot Strategy</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#smes">For SMEs</a></li>
+      <li><a href="#contact" class="nav-cta btn">Get Involved</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <section id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge">Kenya Food Safety Initiative • Data First</div>
+          <h1 class="hero-title">Data-Driven Protection Against <em>Aflatoxin</em></h1>
+          <p class="hero-sub">AFLA-DRY 360° combines IoT-enabled drying, rapid aflatoxin testing, traceability, predictive analytics, and farmer training to protect Kenya's maize supply chain.</p>
+          <div class="hero-ctas">
+            <a href="#partners" class="btn btn-primary">Fund a Pilot →</a>
+            <a href="#smes" class="btn btn-outline">Join the Pilot Network</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="hero-stat-num">40%</div><div class="hero-stat-label">of maize samples exceed safe aflatoxin thresholds</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">60%</div><div class="hero-stat-label">target reduction in unsafe contamination</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">30%</div><div class="hero-stat-label">post-harvest losses reduced</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">360°</div><div class="hero-stat-label">integrated farm-to-market approach</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="dash-header">
+            <h4>LIVE DASHBOARD · REAL-TIME MONITORING</h4>
+            <div class="live-indicator"><span class="live-dot"></span> LIVE DATA</div>
+          </div>
+          <div class="dash-kpis">
+            <div class="dash-kpi">
+              <div class="dash-kpi-row">
+                <span class="dash-kpi-val" id="batchCount">2,847</span>
+                <span class="dash-kpi-lbl">Batches Tested</span>
+              </div>
+              <div class="dash-kpi-badge badge-safe" id="batchTrend">↑ 18% vs last season</div>
+            </div>
+            <div class="dash-kpi">
+              <div class="dash-kpi-row">
+                <span class="dash-kpi-val" id="contaminationRate">12.4%</span>
+                <span class="dash-kpi-lbl">Above 10ppb threshold</span>
+              </div>
+              <div class="dash-kpi-badge badge-warn" id="contaminationTrend">▼ Down from 31%</div>
+              <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 12.4%"></div></div>
+            </div>
+            <div class="dash-kpi">
+              <div class="dash-kpi-row">
+                <span class="dash-kpi-val" id="activeSensors">128</span>
+                <span class="dash-kpi-lbl">Active IoT Sensors</span>
+              </div>
+              <div class="dash-kpi-badge badge-safe">Coverage +12% this month</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="challenge" class="section-padding">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">The Urgency</div>
+        <h2 class="section-title">Kenya's Hidden Food <em>Safety Crisis</em></h2>
+        <p class="section-lead">Aflatoxin contamination threatens food safety, public health, and agricultural trade across Kenya.</p>
+      </div>
+      <div class="challenge-cards reveal">
+        <div class="info-card"><div class="info-icon icon-warning"></div><h3>Public Health Hazard</h3><p>Over 4 million Kenyans at risk of chronic aflatoxin exposure, linked to liver cancer and immune suppression.</p></div>
+        <div class="info-card"><div class="info-icon icon-market"></div><h3>Market Rejection</h3><p>Up to 45% of maize lots rejected, causing 50M USD annual losses for farmers and traders.</p></div>
+        <div class="info-card"><div class="info-icon icon-loss"></div><h3>Post-Harvest Losses</h3><p>Traditional drying methods promote fungal growth, leading to significant post-harvest losses.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solution" class="section-padding" style="background: #F9F7F2;">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Technology Stack</div>
+        <h2 class="section-title">Smart Drying. Smart Detection. <em>Smart Decisions.</em></h2>
+        <p class="section-lead">AFLA-DRY 360° combines IoT hardware, rapid diagnostics, predictive analytics and digital traceability.</p>
+      </div>
+      <div class="solution-features reveal">
+        <div class="info-card"><div class="info-icon icon-iot"></div><h3>IoT Dryers + Sensors</h3><p>Real-time moisture monitoring, reducing fungal growth by 58% and improving grain quality.</p></div>
+        <div class="info-card"><div class="info-icon icon-test"></div><h3>Rapid Aflatoxin Testing</h3><p>Results in 15 minutes, integrated with mobile platform for instant traceability and compliance.</p></div>
+        <div class="info-card"><div class="info-icon icon-analytics"></div><h3>Predictive Analytics</h3><p>Weather-linked risk forecasts for proactive decisions and early warning systems.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="section-padding">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Outcome Driven</div>
+        <h2 class="section-title">Measurable Change <em>at Scale</em></h2>
+        <p class="section-lead">Transforming Kenya's grain value chain with data integrity and climate resilience.</p>
+      </div>
+      <div class="impact-metrics reveal">
+        <div class="info-card"><div class="info-icon icon-carbon"></div><h3>Carbon-smart Drying</h3><p>22% lower emissions compared to traditional open sun drying methods, supporting Kenya's climate goals.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pilot" class="section-padding" style="background: var(--primary-light);">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Roadmap 2026-27</div>
+        <h2 class="section-title">Pilot Strategy <em>with Integrity</em></h2>
+        <p class="section-lead">Deploying a phased pilot in Makueni and Bungoma counties.</p>
+        <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between;">
+          <div style="background: white; border-radius: 28px; padding: 28px; flex:1; min-width: 200px; box-shadow: var(--shadow-sm);"><strong style="font-size: 1.6rem;color:var(--primary);">Phase 1</strong><br>Sensor deployment + baseline testing</div>
+          <div style="background: white; border-radius: 28px; padding: 28px; flex:1; min-width: 200px; box-shadow: var(--shadow-sm);"><strong style="font-size: 1.6rem;color:var(--primary);">Phase 2</strong><br>Digital traceability + test hubs</div>
+          <div style="background: white; border-radius: 28px; padding: 28px; flex:1; min-width: 200px; box-shadow: var(--shadow-sm);"><strong style="font-size: 1.6rem;color:var(--primary);">Phase 3</strong><br>Market linkages + scale-up</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS SECTION - FIXED WITH PROPER IMAGE SOURCES -->
+  <section id="partners" class="section-padding">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Collaboration</div>
+        <h2 class="section-title">Strategic <em>Partners</em></h2>
+        <p class="section-lead">Together with government agencies, research institutions, and agribusinesses.</p>
+      </div>
+
+      <div class="partners-carousel-container reveal">
+        <div class="carousel-nav-btn carousel-nav-btn-left" id="scrollLeftBtn">←</div>
+        <div class="carousel-nav-btn carousel-nav-btn-right" id="scrollRightBtn">→</div>
+
+        <div class="carousel-wrapper" id="carouselWrapper">
+          <div class="partner-carousel" id="partnerCarousel">
+            
+            <!-- KEBS -->
+            <div class="partner-card-carousel">
+              <img src="kebs-logo.jpg" alt="KEBS Logo" class="partner-logo-img" 
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+              <div class="partner-name-carousel" style="display: block;">KEBS</div>
+            </div>
+            
+            <!-- AFA -->
+            <div class="partner-card-carousel">
+              <img src="AFA-logo.jpg" alt="AFA Logo" class="partner-logo-img"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+              <div class="partner-name-carousel" style="display: block;">AFA</div>
+            </div>
+            
+            <!-- University of Nairobi -->
+            <div class="partner-card-carousel">
+              <img src="UoN_Logo.png" alt="University of Nairobi Logo" class="partner-logo-img"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+              <div class="partner-name-carousel" style="display: block;">University of Nairobi</div>
+            </div>
+            
+            <!-- DANIDA (note the space in filename) -->
+            <div class="partner-card-carousel">
+              <img src="Danida logo.png" alt="DANIDA Logo" class="partner-logo-img"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+              <div class="partner-name-carousel" style="display: block;">DANIDA</div>
+            </div>
+            
+            <!-- Ministry of Agriculture -->
+            <div class="partner-card-carousel">
+              <img src="MoALD LOGO.jpg" alt="Ministry of Agriculture Logo" class="partner-logo-img"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+              <div class="partner-name-carousel" style="display: block;">Ministry of Agriculture</div>
+            </div>
+            
+            <!-- East African Grain Council -->
+            <div class="partner-card-carousel">
+              <img src="EAGC.jpg" alt="East African Grain Council Logo" class="partner-logo-img"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+              <div class="partner-name-carousel" style="display: block;">East African Grain Council</div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="smes" class="section-padding" style="background: #F4F1E8;">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Opportunity for Aggregators</div>
+        <h2 class="section-title">For SMEs & <em>Cooperative Unions</em></h2>
+        <p class="section-lead">Join the AFLA-DRY network: access affordable testing devices, premium drying tech, and secure offtake agreements.</p>
+        <div class="sme-opportunity reveal">
+          <div class="info-card"><div class="info-icon icon-cert"></div><h3>Certified Safe Seal</h3><p>Digital certificate for aflatoxin-safe batches, enhancing market access and premium pricing.</p></div>
+          <div class="info-card"><div class="info-icon icon-data"></div><h3>Data-driven yield</h3><p>Real-time analytics for better inventory management, forecasting, and quality control.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="reveal contact-box">
+        <div class="section-label" style="background: #ffffffcc;">Partner Desk</div>
+        <h2 class="section-title" style="color: var(--primary-deep);">Join <em>AFLA-DRY 360°</em></h2>
+        <p style="max-width: 540px; margin: 0 auto 20px; color: #2f2a24;">Let's co-design a resilient, aflatoxin-safe future.</p>
+        <a href="#" class="contact-btn">sylvianekesa@gmail.com →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-logo-row">
+            <div class="footer-logo-mark">AD</div>
+            <div class="footer-logo-name" style="font-weight: 700;">AFLA-DRY 360°</div>
+          </div>
+          <p style="margin-top: 18px; max-width: 280px;">Climate-smart aflatoxin mitigation for safer food systems in Kenya.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 AFLA-DRY 360°. All rights reserved. — Data-led food safety initiative</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation toggle
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', () => {
+      document.body.classList.toggle('nav-mobile-open');
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    function handleReveal() {
+      const windowHeight = window.innerHeight;
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < windowHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', handleReveal);
+    window.addEventListener('load', handleReveal);
+
+    // Smooth anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === "#" || targetId === "") return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (document.body.classList.contains('nav-mobile-open')) {
+            document.body.classList.remove('nav-mobile-open');
+          }
+        }
+      });
+    });
+
+    // Live dashboard simulation
+    let batchCount = 2847;
+    let contaminationRate = 12.4;
+    let activeSensors = 128;
+    
+    function updateLiveDashboard() {
+      batchCount += Math.floor(Math.random() * 4);
+      contaminationRate = +(contaminationRate + (Math.random() - 0.5) * 0.25).toFixed(1);
+      contaminationRate = Math.min(15.5, Math.max(9.5, contaminationRate));
+      activeSensors += Math.floor(Math.random() * 2);
+      
+      document.getElementById('batchCount').innerText = batchCount.toLocaleString();
+      document.getElementById('contaminationRate').innerText = contaminationRate + '%';
+      document.getElementById('activeSensors').innerText = activeSensors;
+      document.getElementById('progressFill').style.width = contaminationRate + '%';
+      
+      const batchTrend = document.getElementById('batchTrend');
+      const batchIncrease = Math.floor(Math.random() * 6) + 15;
+      batchTrend.innerHTML = `↑ ${batchIncrease}% vs last season`;
+      
+      const contTrend = document.getElementById('contaminationTrend');
+      const decrease = Math.floor(Math.random() * 9) + 14;
+      contTrend.innerHTML = `▼ Down from ${decrease + 15}%`;
+    }
+    
+    setInterval(updateLiveDashboard, 5500);
+
+    // Carousel functionality
+    const carouselWrapper = document.getElementById('carouselWrapper');
+    const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+    const scrollRightBtn = document.getElementById('scrollRightBtn');
+
+    if(scrollLeftBtn && scrollRightBtn) {
+      scrollLeftBtn.addEventListener('click', () => {
+        carouselWrapper.scrollBy({ left: -300, behavior: 'smooth' });
+      });
+      scrollRightBtn.addEventListener('click', () => {
+        carouselWrapper.scrollBy({ left: 300, behavior: 'smooth' });
+      });
+    }
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    carouselWrapper.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carouselWrapper.style.cursor = 'grabbing';
+      startX = e.pageX - carouselWrapper.offsetLeft;
+      scrollLeft = carouselWrapper.scrollLeft;
+    });
+
+    carouselWrapper.addEventListener('mouseleave', () => {
+      isDown = false;
+      carouselWrapper.style.cursor = 'grab';
+    });
+
+    carouselWrapper.addEventListener('mouseup', () => {
+      isDown = false;
+      carouselWrapper.style.cursor = 'grab';
+    });
+
+    carouselWrapper.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carouselWrapper.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carouselWrapper.scrollLeft = scrollLeft - walk;
+    });
+
+    carouselWrapper.addEventListener('touchstart', (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX - carouselWrapper.offsetLeft;
+      scrollLeft = carouselWrapper.scrollLeft;
+    });
+
+    carouselWrapper.addEventListener('touchend', () => {
+      isDown = false;
+    });
+
+    carouselWrapper.addEventListener('touchmove', (e) => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX - carouselWrapper.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carouselWrapper.scrollLeft = scrollLeft - walk;
+    });
+  </script>
+</body>
+</html>
